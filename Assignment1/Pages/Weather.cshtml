@@ -1,0 +1,36 @@
+﻿@page
+@model Assignment1.Pages.WeatherModel
+@{
+    ViewData["Title"] = "Weather Forecast";
+}
+
+<h2>Weather Forecast</h2>
+
+@if (Model.Forecasts != null && Model.Forecasts.Any())
+{
+    <table style="width: 100%; border-collapse: collapse; text-align: left;">
+        <thead>
+            <tr style="border-bottom: 2px solid #ddd;">
+                <th style="padding: 8px;">Date</th>
+                <th style="padding: 8px;">Temperature (°C)</th>
+                <th style="padding: 8px;">Temperature (°F)</th>
+                <th style="padding: 8px;">Summary</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var forecast in Model.Forecasts)
+            {
+                <tr style="border-bottom: 1px solid #ddd;">
+                    <td style="padding: 8px;">@forecast.Date</td>
+                    <td style="padding: 8px;">@forecast.TemperatureC</td>
+                    <td style="padding: 8px;">@forecast.TemperatureF</td>
+                    <td style="padding: 8px;">@forecast.Summary</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>No weather data available.</p>
+}
